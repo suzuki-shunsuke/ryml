@@ -21,7 +21,7 @@ const handleParams = (text, argv) => {
   }
 
   for (const envName in process.env) {
-    text = text.replace(`$${envName}`, process.env[envName]);
+    text = text.replace(`$(${envName})`, process.env[envName]);
   }
   try {
     data = yaml.safeLoad(text);
