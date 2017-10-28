@@ -14,7 +14,7 @@ const handleParams = (text, argv) => {
     try {
       data = yaml.safeLoad(text);
     } catch (e) {
-      console.log(e);
+      console.error(e);
       process.exit(1);
     }
     console.log(`cat << END | ryml\n${yaml.safeDump(data)}END\n`);
@@ -26,7 +26,7 @@ const handleParams = (text, argv) => {
   try {
     data = yaml.safeLoad(text);
   } catch (e) {
-    console.log(e);
+    console.error(e);
     process.exit(1);
   }
   if (!data.method) {
