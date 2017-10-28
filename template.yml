@@ -1,0 +1,15 @@
+# vi: set ft=yaml :
+# https://github.com/axios/axios#request-config
+url: 
+method: 
+# headers:
+# params:
+# data:
+# timeout: 1000
+# auth:
+#   username:
+#   password:
+# responseType: json
+# xsrfCookieName: XSRF-TOKEN
+# xsrfHeaderName: X-XSRF-TOKEN
+# maxContentLength: 2000
