@@ -1,4 +1,9 @@
-  Usage: ryml [options]
+  Usage: ryml [options] [<method> <url>]
+
+  Args:
+
+    method      http method
+    url         url
 
   Options:
 

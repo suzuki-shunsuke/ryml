@@ -8,7 +8,7 @@ const inquirer = require('inquirer');
 const yaml = require('js-yaml');
 const minimist = require('minimist');
 
-const handleParams = (text, argv) => {
+const handleParams = (text, argv, params) => {
   let data = {};
   if (!argv.quiet) {
     try {
@@ -17,7 +17,11 @@ const handleParams = (text, argv) => {
       console.error(e);
       process.exit(1);
     }
-    console.log(`cat << END | ryml\n${yaml.safeDump(data)}END\n`);
+    if (params.method) {
+      console.log(`cat << END | ryml ${params.method} ${params.url}\n${yaml.safeDump(data)}END\n`);
+    } else {
+      console.log(`cat << END | ryml\n${yaml.safeDump(data)}END\n`);
+    }
   }
 
   for (const envName in process.env) {
@@ -29,6 +33,7 @@ const handleParams = (text, argv) => {
     console.error(e);
     process.exit(1);
   }
+  data = Object.assign(params, data);
   if (!data.method) {
     console.error('method is required.');
     process.exit(1);
@@ -67,8 +72,17 @@ if (!module.parent) {
   } else if (argv.version) {
     console.log(require('./package.json').version);
   } else {
+    const data = {};
+    let tmplName = '';
+    if (argv._.length === 2) {
+      tmplName = 'template2.yml';
+      data.method = argv._[0];
+      data.url = argv._[1];
+    } else {
+      tmplName = 'template.yml';
+    }
     if (process.stdin.isTTY) {
-      fs.readFile(path.join(__dirname, 'template.yml'), (err, tmpl) => {
+      fs.readFile(path.join(__dirname, tmplName), (err, tmpl) => {
         if (err) {
           console.error(err);
           process.exit(1);
@@ -82,7 +96,7 @@ if (!module.parent) {
           if (!answers.parameter) {
             process.exit(0);
           }
-          handleParams(answers.parameter, argv);
+          handleParams(answers.parameter, argv, data);
         });
       });
     } else {
@@ -91,7 +105,7 @@ if (!module.parent) {
         text += chunk;
       });
       process.stdin.on('end', () => {
-        handleParams(text, argv);
+        handleParams(text, argv, data);
       });
     }
   }
