@@ -30,9 +30,15 @@ Instead of the text editor, `ryml` can also accept the standard input.
 
 ```
 cat << END | ryml
-url: http://example.com
+url: https://api.github.com/search/users
 method: get
 END
+```
+
+`ryml` can take the arguments `method` and `url`.
+
+```
+$ ryml get https://api.github.com/search/users
 ```
 
 ## Parameters

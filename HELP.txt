@@ -1,6 +1,12 @@
-  Usage: ryml [options]
+  Usage: ryml [options] [<method> <url>]
+
+  Args:
+
+    method      http method
+    url         url
 
   Options:
 
     -h, --help         output usage information
     -v, --version      output the version number
+    -q, --quiet        don't output the command
