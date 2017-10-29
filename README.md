@@ -35,6 +35,10 @@ method: get
 END
 ```
 
+When you want to redirect or pipe the output, you should use the standard input,
+because if you use the editor you can't redirect or pipe the output.
+
+
 `ryml` can take the arguments `method` and `url`.
 
 ```
