@@ -24,9 +24,11 @@ const handleParams = (text, argv, params) => {
     }
   }
 
-  for (const envName in process.env) {
-    text = text.replace(`$(${envName})`, process.env[envName]);
-  }
+  const envNames = Object.keys(process.env).filter(k => k.length > 1);
+  envNames.sort((a, b) => b.length - a.length);
+  envNames.forEach(envName => {
+    text = text.replace(`${envName}`, process.env[envName]);
+  });
   try {
     data = yaml.safeLoad(text);
   } catch (e) {

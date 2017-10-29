@@ -65,7 +65,7 @@ For example, if the environment variable `PASSWORD` is `hogehoge`, `ryml` replac
 
 ```yaml
 params:
-  password: $(PASSWORD)
+  password: PASSWORD
 ```
 
 to
@@ -74,8 +74,6 @@ to
 params:
   password: hogehoge
 ```
-
-Notice that the parenthesis is required.
 
 ## Licence
 
