@@ -79,6 +79,8 @@ params:
   password: hogehoge
 ```
 
+Notice that the environment varialbles whose name length is 1 are ignored.
+
 ## Licence
 
 [MIT](LICENSE)
