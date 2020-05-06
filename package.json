@@ -15,7 +15,7 @@
     "test": "npm run lint"
   },
   "devDependencies": {
-    "eslint": "4.19.1",
+    "eslint": "6.8.0",
     "husky": "4.2.5",
     "validate-commit-msg": "2.14.0"
   },
