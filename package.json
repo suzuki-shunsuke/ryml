@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "eslint": "7.3.0",
-    "husky": "4.2.5",
+    "husky": "6.0.0",
     "validate-commit-msg": "2.14.0"
   },
   "dependencies": {
